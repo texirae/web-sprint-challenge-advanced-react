@@ -65,6 +65,13 @@ export default class AppClass extends React.Component {
     // Use a POST request to send a payload to the server.
   }
 
+  onUp = (evt) => {
+    this.setState({
+      ...this.state,
+      index: this.state.index-3
+    })
+  }
+
   render() {
     const { className } = this.props
     return (
@@ -76,8 +83,8 @@ export default class AppClass extends React.Component {
         <div id="grid">
           {
             [0, 1, 2, 3, 4, 5, 6, 7, 8].map(idx => (
-              <div key={idx} className={`square${idx === 4 ? ' active' : ''}`}>
-                {idx === 4 ? 'B' : null}
+              <div key={idx} className={`square${idx === this.state.index ? ' active' : ''}`}>
+                {idx === this.state.index ? 'B' : null}
               </div>
             ))
           }
@@ -87,7 +94,7 @@ export default class AppClass extends React.Component {
         </div>
         <div id="keypad">
           <button id="left">LEFT</button>
-          <button id="up">UP</button>
+          <button id="up" onClick={ this.onUp }>UP</button>
           <button id="right">RIGHT</button>
           <button id="down">DOWN</button>
           <button id="reset">reset</button>
