@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 // Suggested initial states
 const initialMessage = ''
 const initialEmail = ''
@@ -19,10 +20,10 @@ export default class AppClass extends React.Component {
   constructor() {
     super();
     this.state = {
-      initialMessage: '',
-      initialEmail: '',
-      initialSteps: 0,
-      initialIndex: 4,
+      message: '',
+      email: '',
+      steps: 0,
+      index: 4,
     }
   }
 
@@ -54,6 +55,10 @@ export default class AppClass extends React.Component {
 
   onChange = (evt) => {
     // You will need this to update the value of the input.
+    this.setState({
+      ...this.state,
+      email: evt.target.value
+    })
   }
 
   onSubmit = (evt) => {
@@ -66,7 +71,7 @@ export default class AppClass extends React.Component {
       <div id="wrapper" className={className}>
         <div className="info">
           <h3 id="coordinates">Coordinates (2, 2)</h3>
-          <h3 id="steps">You moved 0 times</h3>
+          <h3 id="steps">You moved {this.state.steps} times</h3>
         </div>
         <div id="grid">
           {
@@ -88,7 +93,7 @@ export default class AppClass extends React.Component {
           <button id="reset">reset</button>
         </div>
         <form>
-          <input id="email" type="email" placeholder="type email"></input>
+          <input onChange = { this.onChange } id="email" type="email" placeholder="type email" value={this.state.email}></input>
           <input id="submit" type="submit"></input>
         </form>
       </div>
