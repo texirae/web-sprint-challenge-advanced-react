@@ -19,12 +19,13 @@ export default class AppClass extends React.Component {
   // You can delete them and build your own logic from scratch.
   constructor() {
     super();
-    this.state = {
+    this.initialState = {
       message: '',
       email: '',
       steps: 0,
       index: 4,
     }
+    this.state = this.initialState;
   }
 
   getXY = () => {
@@ -93,6 +94,18 @@ export default class AppClass extends React.Component {
     })
   }
 
+  countSteps = (evt) => {
+    this.setState({
+      ...this.state,
+      steps: this.state.steps+1
+    })
+  }
+
+  resetBtn = (evt) => {
+    evt.preventDefault();
+    this.setState(this.initialState);
+  }
+
   render() {
     const { className } = this.props
     return (
@@ -118,7 +131,7 @@ export default class AppClass extends React.Component {
           <button id="up" onClick={ this.onUp }>UP</button>
           <button id="right" onClick={ this.onRight }>RIGHT</button>
           <button id="down" onClick = { this.onDown }>DOWN</button>
-          <button id="reset">reset</button>
+          <button id="reset" onClick={ this.resetBtn }>reset</button>
         </div>
         <form>
           <input onChange = { this.onChange } id="email" type="email" placeholder="type email" value={this.state.email}></input>
