@@ -72,6 +72,13 @@ export default class AppClass extends React.Component {
     })
   }
 
+  onRight = (evt) => {
+    this.setState({
+      ...this.state,
+      index: this.state.index+1
+    })
+  }
+
   render() {
     const { className } = this.props
     return (
@@ -95,7 +102,7 @@ export default class AppClass extends React.Component {
         <div id="keypad">
           <button id="left">LEFT</button>
           <button id="up" onClick={ this.onUp }>UP</button>
-          <button id="right">RIGHT</button>
+          <button id="right" onClick={ this.onRight }>RIGHT</button>
           <button id="down">DOWN</button>
           <button id="reset">reset</button>
         </div>
