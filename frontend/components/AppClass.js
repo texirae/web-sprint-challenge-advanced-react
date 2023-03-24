@@ -72,6 +72,13 @@ export default class AppClass extends React.Component {
     })
   }
 
+  onDown = (evt) => {
+    this.setState({
+      ...this.state,
+      index: this.state.index+3
+    })
+  }
+
   onRight = (evt) => {
     this.setState({
       ...this.state,
@@ -110,7 +117,7 @@ export default class AppClass extends React.Component {
           <button id="left" onClick={ this.onLeft }>LEFT</button>
           <button id="up" onClick={ this.onUp }>UP</button>
           <button id="right" onClick={ this.onRight }>RIGHT</button>
-          <button id="down">DOWN</button>
+          <button id="down" onClick = { this.onDown }>DOWN</button>
           <button id="reset">reset</button>
         </div>
         <form>
