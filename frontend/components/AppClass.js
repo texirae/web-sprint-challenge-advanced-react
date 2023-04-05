@@ -102,8 +102,12 @@ export default class AppClass extends React.Component {
   }
 
   resetBtn = (evt) => {
-    evt.preventDefault();
-    this.setState(this.initialState);
+    this.setState({
+      message: '',
+      email: '',
+      steps: 0,
+      index: 4,
+    })
   }
 
   render() {
